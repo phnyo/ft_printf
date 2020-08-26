@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 17:00:20 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/08/26 17:03:15 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/08/26 17:12:50 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,40 @@ typedef struct		s_dataset
 	int	prefix;
 	int	datatype;
 }					t_dataset;
+
+int					count_digit(unsigned long long int num, int div);
+char				*num_to_str(int num);
+char				*u_num_to_str(unsigned int num, int is_hex, int is_oct);
+int					str_to_int(const char *str, int front);
+int					output_ptr(t_dataset *data, unsigned long long int ptr);
+int					output_char(t_dataset *data, char c);
+int					output_num(t_dataset *data, int nbr);
+int					output_unum(t_dataset *data, unsigned int nbr, \
+								int is_hex, int is_oct);
+int					output_str(t_dataset *data, const char *content);
+int					fill_field(const char *args, int *front, int rear);
+int					fill_flg(const char *str, int front);
+int					parse_front(t_dataset **data, const char *args, \
+								int front, va_list list);
+int					is_terminator(const char c);
+int					is_flg(char c);
+int					process_w_p(t_dataset *data, char **str);
+int					process_flg(t_dataset *data, char **str);
+int					process_fmt(t_dataset *data, char *str);
+char				*conv_left(char *str);
+char				*fill_zero(char *str);
+char				*add_prefix(char *str, int flg, int len);
+long long			ft_max(long long a, long long b);
+long long			ft_abs(long long nbr);
+long long			ft_min(long long a, long long b);
+int					is_num(char c);
+int					ft_strlen(const char *c);
+char				*ft_strdup(const char *c);
+void				super_write(char *s);
+char				*cut_str(char *str, int size);
+char				*extend_str(char *str, int size, int cpy_limit);
+int					output(const char *args, int front, int rear, va_list list);
+int					ft_vprintf(const char *args, va_list list);
+int					ft_printf(const char *args, ...);
 
 #endif
