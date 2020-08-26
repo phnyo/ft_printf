@@ -1,36 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   flg_parse_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/26 17:00:20 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/08/26 17:03:15 by fsugimot         ###   ########.fr       */
+/*   Created: 2020/08/26 16:49:49 by fsugimot          #+#    #+#             */
+/*   Updated: 2020/08/26 16:50:16 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include <stdarg.h>
-# include <stdlib.h>
-# include <unistd.h>
-
-# define SIGNED 1
-# define NUM 2
-# define MIN_FLG 1
-# define SPC_FLG 2
-# define POS_FLG 4
-# define SHA_FLG 8
-# define ZERO_FLG 16
-
-typedef struct		s_dataset
+int	is_terminator(const char c)
 {
-	int	flg;
-	int	width;
-	int	precision;
-	int	prefix;
-	int	datatype;
-}					t_dataset;
+	if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' || c == 'u' ||\
+		c == 'x' || c == 'X' || c == 'o' || c == '%')
+		return (1);
+	return (0);
+}
 
-#endif
+int	is_flg(char c)
+{
+	return (c == '-' || c == ' ' || c == '+' || c == '0' || c == '#');
+}

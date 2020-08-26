@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   numutils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/26 17:00:20 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/08/26 17:03:15 by fsugimot         ###   ########.fr       */
+/*   Created: 2020/08/26 16:32:13 by fsugimot          #+#    #+#             */
+/*   Updated: 2020/08/26 16:32:31 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-# include <stdarg.h>
-# include <stdlib.h>
-# include <unistd.h>
-
-# define SIGNED 1
-# define NUM 2
-# define MIN_FLG 1
-# define SPC_FLG 2
-# define POS_FLG 4
-# define SHA_FLG 8
-# define ZERO_FLG 16
-
-typedef struct		s_dataset
+long long	ft_max(long long a, long long b)
 {
-	int	flg;
-	int	width;
-	int	precision;
-	int	prefix;
-	int	datatype;
-}					t_dataset;
+	return (a > b ? a : b);
+}
 
-#endif
+long long	ft_abs(long long nbr)
+{
+	return (nbr > 0 ? nbr : -nbr);
+}
+
+long long	ft_min(long long a, long long b)
+{
+	return (a > b ? b : a);
+}
+
+int			is_num(char c)
+{
+	return (c <= '9' && c >= '0');
+}
