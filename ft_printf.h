@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 17:00:20 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/08/26 17:12:50 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/08/26 17:23:11 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int					output_num(t_dataset *data, int nbr);
 int					output_unum(t_dataset *data, unsigned int nbr, \
 								int is_hex, int is_oct);
 int					output_str(t_dataset *data, const char *content);
-int					fill_field(const char *args, int *front, int rear);
+int					fill_field(const char *args, int *front);
 int					fill_flg(const char *str, int front);
 int					parse_front(t_dataset **data, const char *args, \
 								int front, va_list list);

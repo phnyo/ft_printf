@@ -6,13 +6,13 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:43:39 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/08/26 16:47:38 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/08/26 17:23:02 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		fill_field(const char *args, int *front, int rear)
+int		fill_field(const char *args, int *front)
 {
 	int	num_r;
 	int	ret;
@@ -57,23 +57,17 @@ int		fill_flg(const char *str, int front)
 
 int		parse_front(t_dataset **data, const char *args, int front, va_list list)
 {
-	int			ret;
-	int			rear;
 	t_dataset	*tmp;
 
-	rear = 0;
-	while (!is_terminator(args[rear]))
-		rear++;
-	ret = 0;
 	tmp = *data;
 	tmp->prefix = 0;
 	tmp->flg = fill_flg(args, front);
-	tmp->width = fill_field(args, &front, rear);
+	tmp->width = fill_field(args, &front);
 	if (tmp->width == -1)
 		tmp->width = va_arg(list, int);
 	if (args[front] == '.')
 		front++;
-	tmp->precision = fill_field(args, &front, rear);
+	tmp->precision = fill_field(args, &front);
 	if (tmp->precision == -1)
 		tmp->precision = va_arg(list, int);
 	return (1);
