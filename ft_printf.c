@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/14 15:23:59 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/08/26 16:52:08 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/08/27 08:56:54 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		output(const char *args, int front, int rear, va_list list)
 	if (args[rear] == 'u' || args[rear] == 'x' || args[rear] == 'X' ||\
 		args[rear] == 'o')
 		ret += output_unum(data, va_arg(list, unsigned int), \
-			1 + ((args[rear] == 'X') << 1), (args[rear] == 'o'));
+			(args[rear] == 'x' || args[rear] == 'X') + ((args[rear] == 'X') << 1), (args[rear] == 'o'));
 	if (args[rear] == 's')
 		ret += output_str(data, va_arg(list, char *));
 	if (args[rear] == 'p')

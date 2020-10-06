@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:38:07 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/08/26 16:59:14 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/08/27 09:01:09 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ char	*add_prefix(char *str, int flg, int len)
 	if (!str)
 		return (str);
 	if (flg & 1)
-		str[ind] = 'o';
+		str[ind] = '0';
 	if (flg & 2)
 	{
 		str[ind] = '0';

@@ -1,0 +1,6 @@
+out/
+test.sh
+ft_main.c
+main.c
+printf-tester/
+libftprintf.a

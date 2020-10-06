@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:41:09 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/08/26 16:42:07 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/08/27 13:32:08 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,18 @@ int		process_w_p(t_dataset *data, char **str)
 {
 	int	tmp;
 
-	if (!data->width)
-		data->width = ft_strlen(*str);
-	if (!data->precision)
-		data->precision = ft_strlen(*str);
 	tmp = ft_max(data->precision, ft_max(data->width, ft_strlen(*str)));
-	if (data->width > ft_strlen(*str) || data->precision > ft_strlen(*str))
+	if ((data->width > ft_strlen(*str) || data->precision > ft_strlen(*str)) \
+		&& data->datatype)
 		*str = extend_str(*str, tmp, data->precision);
-	if (data->precision == tmp)
+	if (data->precision == tmp && data->datatype & 2)
 		data->flg |= 16;
-	if (data->precision < ft_strlen(*str))
+	if (!str[0])
+		return (-1);
+	if ((data->precision < ft_strlen(*str) || data->flg & 32) && \
+		(!data->datatype || (str[0][0] == '0' && !str[0][1])))
 	{
-		tmp = ft_strlen(*str);
+		tmp = (data->flg & 32 ? 0 : ft_strlen(*str));
 		*str = cut_str(*str, data->precision);
 		*str = extend_str(*str, tmp, ft_strlen(*str));
 	}

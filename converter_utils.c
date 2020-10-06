@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:45:13 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/08/26 16:58:52 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/08/27 09:42:15 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,20 +72,6 @@ char	*u_num_to_str(unsigned int num, int is_hex, int is_oct)
 		else
 			ret[dig--] = '0' + num % div;
 		num /= div; 
-	}
-	return (ret);
-}
-
-int		str_to_int(const char *str, int front)
-{
-	int	ret;
-	
-	ret = 0;
-	while (is_num(str[front]))
-	{
-		ret *= 10;
-		ret += str[front] - '0';
-		front++;
 	}
 	return (ret);
 }

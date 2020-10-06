@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 17:00:20 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/08/26 17:23:11 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/08/27 13:41:47 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,14 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# define SIGNED 1
+# define SIGNED 1 
 # define NUM 2
 # define MIN_FLG 1
 # define SPC_FLG 2
 # define POS_FLG 4
 # define SHA_FLG 8
 # define ZERO_FLG 16
+# define ZERO_PREC 32
 
 typedef struct		s_dataset
 {
@@ -36,14 +37,13 @@ typedef struct		s_dataset
 int					count_digit(unsigned long long int num, int div);
 char				*num_to_str(int num);
 char				*u_num_to_str(unsigned int num, int is_hex, int is_oct);
-int					str_to_int(const char *str, int front);
+int					str_to_int(const char *str, int front, t_dataset **data);
 int					output_ptr(t_dataset *data, unsigned long long int ptr);
 int					output_char(t_dataset *data, char c);
 int					output_num(t_dataset *data, int nbr);
-int					output_unum(t_dataset *data, unsigned int nbr, \
-								int is_hex, int is_oct);
+int					output_unum(t_dataset *data, int nbr, int is_hex, int is_oct);
 int					output_str(t_dataset *data, const char *content);
-int					fill_field(const char *args, int *front);
+int					fill_field(const char *args, int *front, t_dataset **data, int rot);
 int					fill_flg(const char *str, int front);
 int					parse_front(t_dataset **data, const char *args, \
 								int front, va_list list);

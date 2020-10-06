@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:33:23 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/08/26 17:24:53 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/08/27 13:41:14 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,12 @@ int	output_num(t_dataset *data, int nbr)
 	return (ret);
 }
 
-int	output_unum(t_dataset *data, unsigned int nbr, int is_hex, int is_oct)
+int	output_unum(t_dataset *data, int nbr, int is_hex, int is_oct)
 {
 	int		ret;
 	char	*str;
 
+	nbr = ft_abs(nbr);
 	str = u_num_to_str(nbr, is_hex, is_oct);
 	if (!str)
 		return (-1);
@@ -83,7 +84,13 @@ int	output_str(t_dataset *data, const char *content)
 	int		ret;
 	char	*str;
 
-	str = ft_strdup(content);
+	if (!content && (data->precision != 0 || !(data->flg & 32)))
+		str = ft_strdup("(null)");
+	else if (!content)
+		str = ft_strdup("");
+	else
+		str = ft_strdup(content);
+	data->datatype = 0;
 	if (!str)
 		return (-1);
 	ret = process_fmt(data, str);

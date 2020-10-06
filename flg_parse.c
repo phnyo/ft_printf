@@ -6,23 +6,23 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:43:39 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/08/26 17:23:02 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/08/27 09:48:45 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		fill_field(const char *args, int *front)
+int		fill_field(const char *args, int *front, t_dataset **data, int rot)
 {
 	int	num_r;
 	int	ret;
 
 	num_r = *front;
-	while (is_flg(args[num_r]))
+	while ((is_flg(args[num_r]) && !rot) || (rot && args[num_r] == '.'))
 		num_r++;
 	if (args[num_r] == '*')
 		return (-1);
-	ret = str_to_int(args, num_r);
+	ret = str_to_int(args, num_r, data);
 	*front = num_r;
 	return (ret);
 }
@@ -58,16 +58,18 @@ int		fill_flg(const char *str, int front)
 int		parse_front(t_dataset **data, const char *args, int front, va_list list)
 {
 	t_dataset	*tmp;
+	int			rear;
 
+	rear = front;
+	while (!is_terminator(args[rear]))
+		rear++;
 	tmp = *data;
 	tmp->prefix = 0;
 	tmp->flg = fill_flg(args, front);
-	tmp->width = fill_field(args, &front);
+	tmp->width = fill_field(args, &front, data, 0);
 	if (tmp->width == -1)
 		tmp->width = va_arg(list, int);
-	if (args[front] == '.')
-		front++;
-	tmp->precision = fill_field(args, &front);
+	tmp->precision = fill_field(args, &front, data, 1);
 	if (tmp->precision == -1)
 		tmp->precision = va_arg(list, int);
 	return (1);
