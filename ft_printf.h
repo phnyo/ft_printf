@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 17:00:20 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/08/27 13:41:47 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/08 17:00:30 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@ typedef struct		s_dataset
 	int	datatype;
 }					t_dataset;
 
-int					count_digit(unsigned long long int num, int div);
-char				*num_to_str(int num);
+int					count_digit(long long int num, int div);
+char				*num_to_str(long long int num);
 char				*u_num_to_str(unsigned int num, int is_hex, int is_oct);
-int					str_to_int(const char *str, int front, t_dataset **data);
+int					str_to_int(const char *str, int *front, t_dataset **data);
 int					output_ptr(t_dataset *data, unsigned long long int ptr);
 int					output_char(t_dataset *data, char c);
 int					output_num(t_dataset *data, int nbr);
-int					output_unum(t_dataset *data, int nbr, int is_hex, int is_oct);
+int					output_unum(t_dataset *data, unsigned int nbr, int is_hex, int is_oct);
 int					output_str(t_dataset *data, const char *content);
 int					fill_field(const char *args, int *front, t_dataset **data, int rot);
 int					fill_flg(const char *str, int front);
@@ -53,8 +53,9 @@ int					process_w_p(t_dataset *data, char **str);
 int					process_flg(t_dataset *data, char **str);
 int					process_fmt(t_dataset *data, char *str);
 char				*conv_left(char *str);
-char				*fill_zero(char *str);
+char				*fill_zero(char *str, t_dataset *data);
 char				*add_prefix(char *str, int flg, int len);
+int					is_neg(char *str);
 long long			ft_max(long long a, long long b);
 long long			ft_abs(long long nbr);
 long long			ft_min(long long a, long long b);

@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:38:07 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/08/27 09:01:09 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/08 17:01:15 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,31 @@ char	*conv_left(char *str)
 	return (str);
 }
 
-char	*fill_zero(char *str)
+char	*fill_zero(char *str, t_dataset *data)
 {
-	int ind;
+	int			ind;
+	int			front;
+	int			fin;
 
-	ind = 0;
-	while (str[ind] == ' ')
+	fin = ft_max(data->width, data->precision);
+	if (data->width == -2 || data->precision == -2)
+		ind = 0;
+	else
+		ind = fin - data->precision;
+	front = ind;
+	if (ft_strlen(str) == data->precision && is_neg(str))
+		str = extend_str(str, ft_strlen(str) + 1, ft_strlen(str));
+	if (!str)
+		return (str);
+	while (str[ind] == ' ' && ind < fin)
 	{
 		str[ind] = '0';
 		ind++;
+	}
+	if (str[ind] == '-')
+	{
+		str[front] = '-';
+		str[ind] = '0';
 	}
 	return (str);
 }
@@ -75,4 +91,18 @@ char	*add_prefix(char *str, int flg, int len)
 	if (flg & 16)
 		str[ind] = '+';
 	return (str);
+}
+
+int		is_neg(char *str)
+{
+	int		ind;
+
+	ind = 0;
+	while (str[ind])
+	{
+		if (str[ind] == '-')
+			return (1);
+		ind++;
+	}
+	return (0);
 }

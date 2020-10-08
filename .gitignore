@@ -4,3 +4,6 @@ ft_main.c
 main.c
 printf-tester/
 libftprintf.a
+.gitignore
+pft_2019/
+pft_2019/

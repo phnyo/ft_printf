@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:31:10 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/08/26 16:37:37 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/08 16:49:46 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int		ft_strlen(const char *c)
 	int	index;
 
 	index = 0;
+	if (!c)
+		return (0);
 	while (c[index])
 		++index;
 	return (index);
@@ -52,7 +54,7 @@ char	*cut_str(char *str, int size)
 
 	if (!str)
 		return (0);
-	if (!size)
+	if (size <= 0)
 		return (str);
 	ret = malloc(size + 1);
 	if (!ret)
@@ -79,7 +81,10 @@ char	*extend_str(char *str, int size, int cpy_limit)
 		return (0);
 	ret[size] = 0;
 	ind = 0;
-	tmp = size - ft_min(cpy_limit, ft_strlen(str));
+	if (cpy_limit < 0 || cpy_limit < ft_strlen(str))
+		tmp = size - ft_strlen(str);
+	else
+		tmp = size - ft_min(cpy_limit, ft_strlen(str));
 	while (ind < tmp)
 	{
 		ret[ind] = ' ';
