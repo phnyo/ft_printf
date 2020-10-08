@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:43:39 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/08 16:19:38 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/08 22:32:21by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		fill_field(const char *args, int *front, t_dataset **data, int rot)
 	tmp = *data;
 	num_r = *front;
 	if (args[num_r] == '.' && !(tmp->flg & ZERO_FLG))
-		tmp->flg |= ZERO_FLG;
+		tmp->flg |= ZERO_FLG; 
 	while ((is_flg(args[num_r]) && !rot) || (rot && args[num_r] == '.'))
 		num_r++;
 	if (args[num_r] == '*')
@@ -78,9 +78,19 @@ int		parse_front(t_dataset **data, const char *args, int front, va_list list)
 	tmp->flg = fill_flg(args, front);
 	tmp->width = fill_field(args, cur, data, 0);
 	if (tmp->width == -1)
+	{
 		tmp->width = va_arg(list, int);
+		if (tmp->width < 0)
+			tmp->flg |= MIN_FLG + MIN_FIELD;
+		tmp->width = ft_abs(tmp->width);
+	}
 	tmp->precision = fill_field(args, cur, data, 1);
 	if (tmp->precision == -1)
+	{
 		tmp->precision = va_arg(list, int);
+		if (tmp->precision < 0)
+			tmp->flg |= MIN_FLG + MIN_FIELD;
+		tmp->precision = ft_abs(tmp->precision);
+	}
 	return (1);
 }

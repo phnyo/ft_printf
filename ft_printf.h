@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 17:00:20 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/08 17:00:30 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/08 23:51:46 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,14 @@
 
 # define SIGNED 1 
 # define NUM 2
+# define PERC 4
 # define MIN_FLG 1
 # define SPC_FLG 2
 # define POS_FLG 4
 # define SHA_FLG 8
 # define ZERO_FLG 16
 # define ZERO_PREC 32
+# define MIN_FIELD 64
 
 typedef struct		s_dataset
 {

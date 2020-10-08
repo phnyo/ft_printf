@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:33:23 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/08 17:10:56 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/08 23:40:37 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,10 @@ int	output_char(t_dataset *data, char c)
 		return (-1);
 	str[1] = 0;
 	str[0] = c;
+	if (c != '%')
+		data->datatype |= NUM;
+	else
+		data->datatype |= PERC;
 	ret = process_fmt(data, str);
 	return (ret);
 }
@@ -95,8 +99,12 @@ int	output_str(t_dataset *data, const char *content)
 	int		ret;
 	char	*str;
 
-	if (data->precision == -2)
+	if (data->flg & ZERO_FLG)
+		data->flg &= ~ZERO_FLG;
+	if (data->precision == -2 && !content)
 		str = ft_strdup("(null)");
+	else if (!data->precision)
+		str = ft_strdup("");
 	else
 		str = ft_strdup(content);
 	data->datatype = 0;

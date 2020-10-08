@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:41:09 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/08 17:10:31 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/08 23:51:21 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,23 @@ int		process_w_p(t_dataset *data, char **str)
 {
 	int	tmp;
 
-	tmp = ft_max(data->precision, ft_max(data->width, ft_strlen(*str)));
-	if ((data->width > ft_strlen(*str) || data->precision > ft_strlen(*str)) \
-		&& data->datatype)
+	tmp = ft_max(data->precision, data->width);
+	if (tmp > ft_strlen(*str) && data->datatype && data->datatype != PERC)
 		*str = extend_str(*str, tmp, data->precision);
-	if (data->precision == tmp && data->datatype & SIGNED)
-		data->flg |= ZERO_FLG;
 	if (!str[0])
 		return (-1);
-	if ((data->precision < ft_strlen(*str) || data->flg & ZERO_PREC) && \
+	if (data->precision == tmp && data->datatype & SIGNED)
+		data->flg |= ZERO_FLG;
+	if ((data->precision < ft_strlen(*str)) && \
 		(!data->datatype || (str[0][0] == '0' && !str[0][1])))
 	{
-		tmp = (data->flg & ZERO_PREC ? 0 : ft_strlen(*str));
+		if (data->precision < 0 || str[0][0] == '0')
+			tmp = (data->flg & ZERO_PREC ? 0 : ft_strlen(*str));
 		*str = cut_str(*str, data->precision);
 		*str = extend_str(*str, tmp, ft_strlen(*str));
 	}
+	if (data->width > ft_strlen(*str) && data->datatype != PERC)
+		*str = extend_str(*str, data->width, ft_strlen(*str));
 	if (!str[0])
 		return (-1);
 	return (0);
@@ -38,7 +40,7 @@ int		process_w_p(t_dataset *data, char **str)
 
 int		process_flg(t_dataset *data, char **str)
 {
-	if (data->flg & MIN_FLG)
+	if (data->flg & MIN_FLG && !(data->flg & ZERO_FLG))
 		*str = conv_left(*str);
 	if (data->flg & SPC_FLG && data->datatype & SIGNED)
 		*str = add_prefix(*str, 8, 1);
@@ -48,6 +50,8 @@ int		process_flg(t_dataset *data, char **str)
 		*str = add_prefix(*str, data->prefix, 1 + ((data->prefix & 2) != 0));
 	if (data->flg & ZERO_FLG && data->datatype & NUM)
 		*str = fill_zero(*str, data);
+	if (data->flg & MIN_FIELD && data->flg & MIN_FLG)
+		*str = conv_left(*str);
 	if (!(*str))
 		return (-1);
 	return (0);

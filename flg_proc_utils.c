@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:38:07 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/08 17:01:15 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/08 23:51:36 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*conv_left(char *str)
 	ind = 0;
 	rear = 0;
 	size = ft_strlen(str);
-	while (str[rear] == ' ' && str[rear])
+	while (str[rear] && (str[rear] == ' ' ))
 		rear++;
 	while (ind < size - rear)
 	{
@@ -59,8 +59,8 @@ char	*fill_zero(char *str, t_dataset *data)
 	}
 	if (str[ind] == '-')
 	{
-		str[front] = '-';
-		str[ind] = '0';
+		str[front - (str[front - 1] == ' ')] = '-';
+		str[ind] = (ind == front) ? '-' : '0';
 	}
 	return (str);
 }
