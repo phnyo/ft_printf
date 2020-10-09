@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:38:07 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/09 11:25:08 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/09 11:30:48 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,11 +107,12 @@ int		is_neg(char *str)
 	return (0);
 }
 
-char	*fill_0x(char *str)
+char	*fill_0x(char *str, t_dataset *data)
 {
 	int			ind;
 	char		*ret;
 
+	ind = data->precision;
 	ret = malloc(ft_strlen(str) + 3);
 	ind = 2;
 	ret[0] = '0';
