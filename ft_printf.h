@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 17:00:20 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/08 23:51:46 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/09 10:55:33 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 # define SIGNED 1 
 # define NUM 2
-# define PERC 4
+# define CHAR 4
 # define MIN_FLG 1
 # define SPC_FLG 2
 # define POS_FLG 4

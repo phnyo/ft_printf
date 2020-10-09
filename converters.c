@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:33:23 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/08 23:40:37 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/09 10:51:02 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,18 @@ int	output_ptr(t_dataset *data, unsigned long long int ptr)
 	int		ret;
 	char	*str;
 
-	if (!ptr)
-		str = ft_strdup("(nil)");
-	else
+	dig = count_digit(ptr, (1 << 4)) + 1;
+	str = malloc(dig + 3);
+	str[dig + 1] = 0;
+	str[0] = '0';
+	str[1] = 'x';
+	while (ptr > 0)
 	{
-		dig = count_digit(ptr, (1 << 4)) + 1;
-		str = malloc(dig + 3);
-		str[dig + 1] = 0;
-		str[0] = '0';
-		str[1] = 'x';
-		while (ptr > 0)
-		{
-			if (ptr % 16 > 9)
-				str[dig--] = 'a' + ptr % 16 - 10;
-			else
-				str[dig--] = '0' + ptr % 16;
-			ptr /= 16;
-		}
+		if (ptr % 16 > 9)
+			str[dig--] = 'a' + ptr % 16 - 10;
+		else
+			str[dig--] = '0' + ptr % 16;
+		ptr /= 16;
 	}
 	data->datatype |= NUM;
 	ret = process_fmt(data, str);
@@ -51,10 +46,7 @@ int	output_char(t_dataset *data, char c)
 		return (-1);
 	str[1] = 0;
 	str[0] = c;
-	if (c != '%')
-		data->datatype |= NUM;
-	else
-		data->datatype |= PERC;
+	data->datatype |= NUM;
 	ret = process_fmt(data, str);
 	return (ret);
 }

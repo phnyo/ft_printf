@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:41:09 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/08 23:51:21 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/09 10:56:51 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		process_w_p(t_dataset *data, char **str)
 	int	tmp;
 
 	tmp = ft_max(data->precision, data->width);
-	if (tmp > ft_strlen(*str) && data->datatype && data->datatype != PERC)
+	if (tmp > ft_strlen(*str) && data->datatype)
 		*str = extend_str(*str, tmp, data->precision);
 	if (!str[0])
 		return (-1);
@@ -31,7 +31,7 @@ int		process_w_p(t_dataset *data, char **str)
 		*str = cut_str(*str, data->precision);
 		*str = extend_str(*str, tmp, ft_strlen(*str));
 	}
-	if (data->width > ft_strlen(*str) && data->datatype != PERC)
+	if (data->width > ft_strlen(*str))
 		*str = extend_str(*str, data->width, ft_strlen(*str));
 	if (!str[0])
 		return (-1);
