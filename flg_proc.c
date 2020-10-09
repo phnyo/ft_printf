@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:41:09 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/09 12:07:25 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/09 13:42:03 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int		process_flg(t_dataset *data, char **str)
 	if (data->flg & ZERO_FLG && data->datatype & NUM)
 		*str = fill_zero(*str, data);
 	if (data->flg & PTR_FLG)
-		*str = fill_0x(*str, data);
+		*str = fill_0x(*str);
 	if (data->flg & MIN_FLG)
 		*str = conv_left(*str);
 	if (!(*str))

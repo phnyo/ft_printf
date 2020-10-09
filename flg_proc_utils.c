@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:38:07 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/09 13:24:09 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/09 13:41:56 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,35 +107,22 @@ int		is_neg(char *str)
 	return (0);
 }
 
-char	*fill_0x(char *str, t_dataset *data)
+char	*fill_0x(char *str)
 {
 	int			ind;
 	char		*ret;
 
-	if (data->width <= ft_strlen(str) + 1)
-		ret = malloc(ft_strlen(str) + 3);
+	ind = 0;
+	while (str[ind] == ' ')
+		ind++;
+	if (ind < 2)
+		ret = extend_str(str, ft_strlen(str) + (2 - ind), ft_strlen(str));
 	else
 		ret = str;
 	if (!ret)
 		return (ret);
-	ind = 0;
-	while (str[ind] == ' ')
-		ind++;
-	if (data->width <= ft_strlen(str) + 1)
-		ind += 2;
-	if (data->width <= ft_strlen(str) + 1)
-		ret = fill_space(ret, ft_strlen(str) + 3);
-	ret[ind - 1] = 'x';
+	ind = ind < 2 ? 2 : ind;
 	ret[ind - 2] = '0';
-	if (data->width <= ft_strlen(str) + 1)
-	{
-		while (str[ind - 2])
-		{
-			ret[ind] = str[ind - 2];
-			++ind;
-		}
-		free(str);
-		ret[ind] = 0;
-	}
+	ret[ind - 1] = 'x';
 	return (ret);
 }
