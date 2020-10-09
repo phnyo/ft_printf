@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:38:07 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/10 02:02:48 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/10 02:36:57 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,23 +40,18 @@ char	*fill_zero(char *str, t_dataset *data)
 {
 	int			ind;
 	int			front;
-	int			fin;
 
-	fin = ft_max(data->width, data->precision);
 	if (data->width == -2 || data->precision == -2)
 		ind = 0;
 	else
-		ind = fin - data->precision;
+		ind = ft_max(data->width, data->precision) - data->precision;
 	front = ind;
 	if (ft_strlen(str) == data->precision && is_neg(str))
 		str = extend_str(str, ft_strlen(str) + 1, ft_strlen(str));
 	if (!str)
 		return (str);
-	while (str[ind] == ' ' && ind < fin)
-	{
-		str[ind] = '0';
-		ind++;
-	}
+	while (str[ind] == ' ' && ind < ft_max(data->width, data->precision))
+		str[ind++] = '0';
 	if (str[ind] == '-')
 	{
 		if (front && str[front - 1] == ' ')
@@ -109,4 +104,3 @@ int		is_neg(char *str)
 	}
 	return (0);
 }
-

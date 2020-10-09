@@ -6,28 +6,22 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:43:39 by fsugimot          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2020/10/10 01:51:11 by fsugimot         ###   ########.fr       */
-=======
-/*   Updated: 2020/10/10 01:20:33 by fsugimot         ###   ########.fr       */
->>>>>>> ed776da523139211b48a88debaabfae01f65eb9d
+/*   Updated: 2020/10/10 02:35:46 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		fill_field(const char *args, int *front, t_dataset **data, int rot)
+int		fill_field(const char *args, int *front, t_dataset *data, int rot)
 {
 	int			num_r;
 	int			ret;
-	t_dataset	*tmp;
 
-	tmp = *data;
 	num_r = *front;
-	if (args[num_r] == '.' && !(tmp->flg & ZERO_FLG))
-		tmp->flg |= ZERO_FLG;
+	if (args[num_r] == '.' && !(data->flg & ZERO_FLG))
+		data->flg |= ZERO_FLG;
 	if (args[num_r] == '.')
-		tmp->flg |= ZERO_PREC;
+		data->flg |= ZERO_PREC;
 	while ((is_flg(args[num_r]) && !rot) || (rot && args[num_r] == '.' && \
 		args[num_r + 1] != '.'))
 		num_r++;
@@ -36,10 +30,10 @@ int		fill_field(const char *args, int *front, t_dataset **data, int rot)
 		*front = num_r + 1;
 		return (-1);
 	}
-	ret = str_to_int(args, &num_r, data, rot);
+	ret = str_to_int(args, &num_r, rot);
 	*front = num_r;
 	if (ret != -2 && ret != 0)
-		tmp->flg &= ~ZERO_PREC;
+		data->flg &= ~ZERO_PREC;
 	return (ret);
 }
 
@@ -71,58 +65,55 @@ int		fill_flg(const char *str, int front)
 	return (ret);
 }
 
-int		parse_front(t_dataset **data, const char *args, int front, va_list list)
+int		parse_front(t_dataset *data, const char *args, int front, va_list list)
 {
-	t_dataset	*tmp;
 	int			*cur;
 
 	cur = &front;
-	tmp = *data;
-	tmp->prefix = 0;
-	tmp->datatype = 0;
-	tmp->flg = fill_flg(args, front);
-	tmp->width = fill_field(args, cur, data, 0);
-	if (tmp->width == -1)
+	init_data(data, args, front);
+	data->width = fill_field(args, cur, data, 0);
+	if (data->width == -1)
 	{
-		tmp->width = va_arg(list, int);
-		fill_neg_flgs(data, tmp->width, 0);
-		tmp->width = ft_abs(tmp->width);
+		data->width = va_arg(list, int);
+		fill_neg_flgs(data, data->width, 0);
+		data->width = ft_abs(data->width);
 	}
-	tmp->precision = fill_field(args, cur, data, 1);
-	if (tmp->precision == -1)
+	data->precision = fill_field(args, cur, data, 1);
+	if (data->precision == -1)
 	{
-		tmp->precision = va_arg(list, int);
-		fill_neg_flgs(data, tmp->precision, 1);
+		data->precision = va_arg(list, int);
+		fill_neg_flgs(data, data->precision, 1);
 	}
-<<<<<<< HEAD
-	if (tmp->precision == -2 && !is_terminator(args[*cur]) && (args[*cur] != '.' \
-		|| (args[*cur] == '.' && args[*cur + 1] == '.')))
-	{
-		free(*data);
-=======
-	if (tmp->precision == -2 && !is_terminator(args[*cur]) && \
+	if (data->precision == -2 && !is_terminator(args[*cur]) && \
 		(args[*cur] != '.' || (args[*cur] == '.' && args[*cur + 1] == '.')))
->>>>>>> ed776da523139211b48a88debaabfae01f65eb9d
+	{
+		free(data);
 		return (-1);
 	}
 	return (1);
 }
 
-void	fill_neg_flgs(t_dataset **data, int val, int is_prec)
+void	fill_neg_flgs(t_dataset *data, int val, int is_prec)
 {
-	t_dataset	*tmp;
-
-	tmp = *data;
 	if (!is_prec && val < 0)
-		tmp->flg |= MIN_FLG + MIN_FIELD;
+		data->flg |= MIN_FLG + MIN_FIELD;
 	if (is_prec)
 	{
-		if (val > 0 && tmp->flg & MIN_FIELD)
-			tmp->flg &= ~MIN_FIELD;
+		if (val > 0 && data->flg & MIN_FIELD)
+			data->flg &= ~MIN_FIELD;
 		if (val < 0)
-			tmp->flg |= MIN_FLG + MIN_FIELD;
+			data->flg |= MIN_FLG + MIN_FIELD;
 		if (val != 0)
-			tmp->flg &= ~ZERO_PREC;
+			data->flg &= ~ZERO_PREC;
 	}
 	return ;
+}
+
+void	init_data(t_dataset *data, const char *args, int front)
+{
+	data->flg = fill_flg(args, front);
+	data->prefix = 0;
+	data->datatype = 0;
+	data->width = 0;
+	data->precision = 0;
 }

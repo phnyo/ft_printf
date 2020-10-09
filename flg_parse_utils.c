@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:49:49 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/10 00:49:09 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/10 02:31:21 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,13 @@ int	is_flg(char c)
 	return (c == '-' || c == ' ' || c == '+' || c == '0' || c == '#');
 }
 
-int	str_to_int(const char *str, int *front, t_dataset **data, int rot)
+int	str_to_int(const char *str, int *front, int rot)
 {
 	int			ret;
 	int			cur;
-	t_dataset	*tmp;
 
 	ret = -2;
 	cur = *front;
-	tmp = *data;
 	if (is_num(str[cur]))
 		ret = 0;
 	while (is_num(str[cur]))
