@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:43:39 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/09 19:44:20 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/09 19:46:37 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int		fill_flg(const char *str, int front)
 int		parse_front(t_dataset **data, const char *args, int front, va_list list)
 {
 	t_dataset	*tmp;
-	int			rear;
+	int			*cur;
 
 	cur = &front;
 	tmp = *data;
