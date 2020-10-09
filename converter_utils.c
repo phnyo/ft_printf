@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:45:13 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/09 16:27:59 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/09 19:27:27 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ int		count_digit(long long int num, int div)
 	while (num > 0)
 	{
 		num /= div;
-		++dig; 
+		++dig;
 	}
 	return (dig);
 }
 
 char	*num_to_str(long long int num)
 {
-	int		dig; 
+	int		dig;
 	char	*ret;
 
 	dig = count_digit(num, 10);
@@ -45,7 +45,7 @@ char	*num_to_str(long long int num)
 	while (num > 0)
 	{
 		ret[dig--] = '0' + ft_abs(num % 10);
-		num /= 10; 
+		num /= 10;
 	}
 	return (ret);
 }
@@ -59,8 +59,8 @@ char	*u_num_to_str(unsigned long long int num, int is_hex, int is_oct)
 
 	div = is_hex & 1 ? (1 << 4) : 10;
 	div = is_oct ? 8 : div;
-	is_cap = ((is_hex & 2) << 4) ^ 32; 
-	dig = count_digit(num, div);
+	is_cap = ((is_hex & 2) << 4) ^ 32;
+	dig = count_digit(num, div);	
 	ret = malloc(dig + 1);
 	if (!ret)
 		return (ret);
@@ -73,7 +73,7 @@ char	*u_num_to_str(unsigned long long int num, int is_hex, int is_oct)
 			ret[dig--] = ('A' ^ is_cap) + num % div - 10;
 		else
 			ret[dig--] = '0' + num % div;
-		num /= div; 
+		num /= div;
 	}
 	return (ret);
 }

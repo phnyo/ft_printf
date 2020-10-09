@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 17:00:20 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/09 16:44:13 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/09 19:38:09 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# define SIGNED 1 
+# define SIGNED 1
 # define NUM 2
 # define CHAR 4
 # define MIN_FLG 1
@@ -39,17 +39,21 @@ typedef struct		s_dataset
 
 int					count_digit(long long int num, int div);
 char				*num_to_str(long long int num);
-char				*u_num_to_str(unsigned long long int num, int is_hex, int is_oct);
+char				*u_num_to_str(unsigned long long int num, int is_hex, \
+					int is_oct);
 int					str_to_int(const char *str, int *front, t_dataset **data);
 int					output_ptr(t_dataset *data, unsigned long long int ptr);
 int					output_char(t_dataset *data, char c);
 int					output_num(t_dataset *data, int nbr);
-int					output_unum(t_dataset *data, unsigned int nbr, int is_hex, int is_oct);
+int					output_unum(t_dataset *data, unsigned int nbr, int is_hex, \
+					int is_oct);
 int					output_str(t_dataset *data, const char *content);
-int					fill_field(const char *args, int *front, t_dataset **data, int rot);
+int					fill_field(const char *args, int *front, t_dataset **data, \
+					int rot);
 int					fill_flg(const char *str, int front);
 int					parse_front(t_dataset **data, const char *args, \
 								int front, va_list list);
+void				fill_neg_flgs(t_dataset **data, int val, int is_prec);
 int					is_terminator(const char c);
 int					is_flg(char c);
 int					process_w_p(t_dataset *data, char **str);
@@ -58,7 +62,6 @@ int					process_fmt(t_dataset *data, char *str);
 char				*conv_left(char *str);
 char				*fill_zero(char *str, t_dataset *data);
 char				*fill_0x(char *str);
-char				*fill_space(char *str, int size);
 char				*add_prefix(char *str, int flg, int len);
 int					is_neg(char *str);
 long long			ft_max(long long a, long long b);

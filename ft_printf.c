@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/14 15:23:59 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/09 11:06:19 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/09 19:35:55 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ int		output(const char *args, int front, int rear, va_list list)
 	if (args[rear] == 'u' || args[rear] == 'x' || args[rear] == 'X' ||\
 		args[rear] == 'o')
 		ret += output_unum(data, va_arg(list, unsigned int), \
-			(args[rear] == 'x' || args[rear] == 'X') + ((args[rear] == 'X') << 1), (args[rear] == 'o'));
+		(args[rear] == 'x' || args[rear] == 'X') + ((args[rear] == 'X') << 1), \
+		(args[rear] == 'o'));
 	if (args[rear] == 's')
 		ret += output_str(data, va_arg(list, char *));
 	if (args[rear] == 'p')
@@ -54,8 +55,7 @@ int		ft_vprintf(const char *args, va_list list)
 			tmp = ++ind;
 			while (args[ind] && !is_terminator(args[ind]))
 				ind++;
-			tmp = output(args, tmp, ind++, list);
-			if (tmp != -1)
+			if((tmp = output(args, tmp, ind++, list)) != -1)
 				ret += tmp;
 			else
 				return (-1);

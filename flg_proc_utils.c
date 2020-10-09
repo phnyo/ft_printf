@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:38:07 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/09 13:41:56 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/09 19:36:12 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*conv_left(char *str)
 	ind = 0;
 	rear = 0;
 	size = ft_strlen(str);
-	while (str[rear] && (str[rear] == ' ' ))
+	while (str[rear] && (str[rear] == ' '))
 		rear++;
 	while (ind < size - rear)
 	{

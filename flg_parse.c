@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:43:39 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/09 19:24:04 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/09 19:33:33 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		fill_field(const char *args, int *front, t_dataset **data, int rot)
 	tmp = *data;
 	num_r = *front;
 	if (args[num_r] == '.' && !(tmp->flg & ZERO_FLG))
-		tmp->flg |= ZERO_FLG; 
+		tmp->flg |= ZERO_FLG;
 	if (args[num_r] == '.')
 		tmp->flg |= ZERO_PREC;
 	while ((is_flg(args[num_r]) && !rot) || (rot && args[num_r] == '.'))
@@ -84,20 +84,33 @@ int		parse_front(t_dataset **data, const char *args, int front, va_list list)
 	if (tmp->width == -1)
 	{
 		tmp->width = va_arg(list, int);
-		if (tmp->width < 0)
-			tmp->flg |= MIN_FLG + MIN_FIELD;
+		fill_neg_flgs(data, tmp->width, 0);
 		tmp->width = ft_abs(tmp->width);
 	}
 	tmp->precision = fill_field(args, cur, data, 1);
 	if (tmp->precision == -1)
 	{
 		tmp->precision = va_arg(list, int);
-		if (tmp->precision > 0 && tmp->flg & MIN_FIELD)
-			tmp->flg &= ~MIN_FIELD;
-		if (tmp->precision < 0)
-			tmp->flg |= MIN_FLG + MIN_FIELD;
-		if (tmp->precision != 0)
-			tmp->flg &= ~ZERO_PREC;
+		fill_neg_flgs(data, tmp->precision, 1);
 	}
 	return (1);
+}
+
+void	fill_neg_flgs(t_dataset **data, int val, int is_prec)
+{
+	t_dataset	*tmp;
+
+	tmp = *data;
+	if (!is_prec && val < 0)
+		tmp->flg |= MIN_FLG + MIN_FIELD;
+	if (is_prec)
+	{
+		if (val > 0 && tmp->flg & MIN_FIELD)
+			tmp->flg &= ~MIN_FIELD;
+		if (val < 0)
+			tmp->flg |= MIN_FLG + MIN_FIELD;
+		if (val != 0)
+			tmp->flg &= ~ZERO_PREC;
+	}	
+	return ;
 }

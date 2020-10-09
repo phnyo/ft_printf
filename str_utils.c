@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:31:10 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/09 16:54:49 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/09 19:27:57 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,15 +96,4 @@ char	*extend_str(char *str, int size, int cpy_limit)
 	}
 	free(str);
 	return (ret);
-}
-
-char	*fill_space(char *str, int size)
-{
-	int ind;
-
-	ind = 0;
-	while (ind < size)
-		str[ind++] = ' ';
-	str[ind] = 0;
-	return (str);
 }
