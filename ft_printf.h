@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 17:00:20 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/09 19:38:09 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/09 23:42:58 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # define ZERO_PREC 32
 # define MIN_FIELD 64
 # define PTR_FLG 128
+# define CHAR_NULL_FLG 256
 
 typedef struct		s_dataset
 {
@@ -70,7 +71,7 @@ long long			ft_min(long long a, long long b);
 int					is_num(char c);
 int					ft_strlen(const char *c);
 char				*ft_strdup(const char *c);
-void				super_write(char *s);
+void				super_write(char *s, int flg);
 char				*cut_str(char *str, int size);
 char				*extend_str(char *str, int size, int cpy_limit);
 int					output(const char *args, int front, int rear, va_list list);

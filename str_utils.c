@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:31:10 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/09 19:27:57 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/09 23:42:44 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,22 @@ char	*ft_strdup(const char *c)
 	return (ret);
 }
 
-void	super_write(char *s)
+void	super_write(char *s, int flg)
 {
+	int	ind;
+
+	if (flg)
+	{
+		ind = ft_strlen(s);
+		while (s[ind])
+		{
+			if (s[ind] != -1)
+				write(1, &s[ind], 1);
+			else
+				write(1, 0, 1);
+			++ind;
+		}
+	}
 	write(1, s, ft_strlen(s));
 }
 
