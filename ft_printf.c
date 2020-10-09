@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/14 15:23:59 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/09 19:35:55 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/09 19:45:22 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int		ft_vprintf(const char *args, va_list list)
 			tmp = ++ind;
 			while (args[ind] && !is_terminator(args[ind]))
 				ind++;
-			if((tmp = output(args, tmp, ind++, list)) != -1)
+			if ((tmp = output(args, tmp, ind++, list)) != -1)
 				ret += tmp;
 			else
 				return (-1);

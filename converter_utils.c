@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:45:13 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/09 19:27:27 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/09 19:43:43 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ char	*u_num_to_str(unsigned long long int num, int is_hex, int is_oct)
 	div = is_hex & 1 ? (1 << 4) : 10;
 	div = is_oct ? 8 : div;
 	is_cap = ((is_hex & 2) << 4) ^ 32;
-	dig = count_digit(num, div);	
+	dig = count_digit(num, div);
 	ret = malloc(dig + 1);
 	if (!ret)
 		return (ret);

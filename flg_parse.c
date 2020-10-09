@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:43:39 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/09 19:33:33 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/09 19:44:20 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,8 @@ int		parse_front(t_dataset **data, const char *args, int front, va_list list)
 {
 	t_dataset	*tmp;
 	int			rear;
-	int			*cur;
 
 	cur = &front;
-	rear = front;
-	while (!is_terminator(args[rear]))
-		rear++;
 	tmp = *data;
 	tmp->prefix = 0;
 	tmp->datatype = 0;
@@ -111,6 +107,6 @@ void	fill_neg_flgs(t_dataset **data, int val, int is_prec)
 			tmp->flg |= MIN_FLG + MIN_FIELD;
 		if (val != 0)
 			tmp->flg &= ~ZERO_PREC;
-	}	
+	}
 	return ;
 }
