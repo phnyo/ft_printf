@@ -6,11 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:31:10 by fsugimot          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2020/10/10 00:07:35 by fsugimot         ###   ########.fr       */
-=======
-/*   Updated: 2020/10/10 00:07:56 by fsugimot         ###   ########.fr       */
->>>>>>> ba9aa99d3de0c222c1fecb4bea4a50c3efb80ecb
+/*   Updated: 2020/10/10 01:16:53 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
