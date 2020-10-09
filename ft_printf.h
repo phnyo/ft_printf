@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 17:00:20 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/09 16:34:12 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/09 16:44:13 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define SHA_FLG 8
 # define ZERO_FLG 16
 # define ZERO_PREC 32
+# define MIN_FIELD 64
 # define PTR_FLG 128
 
 typedef struct		s_dataset

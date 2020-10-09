@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:41:09 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/09 14:07:56 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/09 16:46:20 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		process_w_p(t_dataset *data, char **str)
 	if (data->precision < ft_strlen(*str) && (!(data->datatype & NUM) || \
 		!data->precision))
 	{
-		if (data->precision < 0 || str[0][0] == '0')
+		if ((data->precision < 0 && !(data->flg & MIN_FIELD)) || str[0][0] == '0')
 			tmp = (data->flg & ZERO_PREC ? 0 : ft_strlen(*str));
 		*str = cut_str(*str, data->precision);
 		*str = extend_str(*str, tmp, ft_strlen(*str));
@@ -46,7 +46,7 @@ int		process_flg(t_dataset *data, char **str)
 		*str = add_prefix(*str, 16, 1);
 	if (data->flg & SHA_FLG && data->prefix > 0)
 		*str = add_prefix(*str, data->prefix, 1 + ((data->prefix & 2) != 0));
-	if (data->flg & ZERO_FLG && data->datatype & NUM)
+	if (data->flg & ZERO_FLG && data->datatype & NUM && !(data->flg & MIN_FIELD))
 		*str = fill_zero(*str, data);
 	if (data->flg & PTR_FLG)
 		*str = fill_0x(*str);
