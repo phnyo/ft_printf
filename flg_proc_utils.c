@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:38:07 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/09 11:30:48 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/09 13:24:09 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,17 +112,30 @@ char	*fill_0x(char *str, t_dataset *data)
 	int			ind;
 	char		*ret;
 
-	ind = data->precision;
-	ret = malloc(ft_strlen(str) + 3);
-	ind = 2;
-	ret[0] = '0';
-	ret[1] = 'x';
-	while (str[ind - 2])
+	if (data->width <= ft_strlen(str) + 1)
+		ret = malloc(ft_strlen(str) + 3);
+	else
+		ret = str;
+	if (!ret)
+		return (ret);
+	ind = 0;
+	while (str[ind] == ' ')
+		ind++;
+	if (data->width <= ft_strlen(str) + 1)
+		ind += 2;
+	if (data->width <= ft_strlen(str) + 1)
+		ret = fill_space(ret, ft_strlen(str) + 3);
+	ret[ind - 1] = 'x';
+	ret[ind - 2] = '0';
+	if (data->width <= ft_strlen(str) + 1)
 	{
-		ret[ind] = str[ind - 2];
-		++ind;
+		while (str[ind - 2])
+		{
+			ret[ind] = str[ind - 2];
+			++ind;
+		}
+		free(str);
+		ret[ind] = 0;
 	}
-	free(str);
-	ret[ind] = 0;
 	return (ret);
 }
