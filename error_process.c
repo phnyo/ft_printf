@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/10 00:55:06 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/10 01:03:13 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/10 01:04:59 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		process_invalid_str(const char *args, int front)
 	str[ind++] = '.';
 	while (args[front] != '.')
 		front++;
-	if (args[++front] == '-')
+	if (args[++front] == '-' || args[front] == '.')
 		str[ind++] = '0';
 	str_cpy(args, &str, front, ind);
 	write(1, str, ft_strlen(str));

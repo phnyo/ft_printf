@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:43:39 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/10 00:48:37 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/10 01:14:32 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ int		fill_field(const char *args, int *front, t_dataset **data, int rot)
 		tmp->flg |= ZERO_FLG;
 	if (args[num_r] == '.')
 		tmp->flg |= ZERO_PREC;
-	while ((is_flg(args[num_r]) && !rot) || (rot && args[num_r] == '.'))
+	while ((is_flg(args[num_r]) && !rot) || (rot && args[num_r] == '.' && \
+		args[num_r + 1] != '.'))
 		num_r++;
 	if (args[num_r] == '*')
 	{
@@ -89,7 +90,8 @@ int		parse_front(t_dataset **data, const char *args, int front, va_list list)
 		tmp->precision = va_arg(list, int);
 		fill_neg_flgs(data, tmp->precision, 1);
 	}
-	if (tmp->precision == -2 && !is_terminator(args[*cur]) && args[*cur] != '.')
+	if (tmp->precision == -2 && !is_terminator(args[*cur]) && (args[*cur] != '.' \
+		|| (args[*cur] == '.' && args[*cur + 1] == '.')))
 		return (-1);
 	return (1);
 }
