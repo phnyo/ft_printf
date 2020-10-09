@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:43:39 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/09 12:13:17 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/09 12:27:15 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int		fill_field(const char *args, int *front, t_dataset **data, int rot)
 	}
 	ret = str_to_int(args, &num_r, data);
 	*front = num_r;
+	if (ret != -2 && ret)
+		tmp->flg &= ~ZERO_PREC;
 	return (ret);
 }
 
