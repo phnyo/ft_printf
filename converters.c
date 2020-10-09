@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:33:23 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/09 12:30:15 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/09 13:27:44 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,11 @@ int	output_unum(t_dataset *data, unsigned int nbr, int is_hex, int is_oct)
 	int		ret;
 	char	*str;
 
-	if (!data->precision && !nbr)
+	if (data->flg & ZERO_PREC && !nbr)
+	{
 		str = ft_strdup("");
+		data->flg &= ~ZERO_FLG;
+	}
 	else
 		str = u_num_to_str(nbr, is_hex, is_oct);
 	if (!str)
