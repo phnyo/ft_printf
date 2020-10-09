@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:43:39 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/09 23:43:11 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/10 00:48:37 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		fill_field(const char *args, int *front, t_dataset **data, int rot)
 		*front = num_r + 1;
 		return (-1);
 	}
-	ret = str_to_int(args, &num_r, data);
+	ret = str_to_int(args, &num_r, data, rot);
 	*front = num_r;
 	if (ret != -2 && ret != 0)
 		tmp->flg &= ~ZERO_PREC;
@@ -89,6 +89,8 @@ int		parse_front(t_dataset **data, const char *args, int front, va_list list)
 		tmp->precision = va_arg(list, int);
 		fill_neg_flgs(data, tmp->precision, 1);
 	}
+	if (tmp->precision == -2 && !is_terminator(args[*cur]) && args[*cur] != '.')
+		return (-1);
 	return (1);
 }
 

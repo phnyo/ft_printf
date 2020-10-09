@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:41:09 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/09 23:43:26 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/09 23:57:21 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int		process_fmt(t_dataset *data, char *str)
 		return (-1);
 	}
 	tmp = ft_strlen(str);
-	super_write(str, data->flg & CHAR_NULL_FLG);
+	super_write(str, (data->flg & CHAR_NULL_FLG) != 0);
 	free(str);
 	free(data);
 	return (tmp);

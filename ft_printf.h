@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 17:00:20 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/09 23:42:58 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/10 00:59:19 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # define MIN_FIELD 64
 # define PTR_FLG 128
 # define CHAR_NULL_FLG 256
+# define PARSE_ERROR 512
 
 typedef struct		s_dataset
 {
@@ -42,7 +43,7 @@ int					count_digit(long long int num, int div);
 char				*num_to_str(long long int num);
 char				*u_num_to_str(unsigned long long int num, int is_hex, \
 					int is_oct);
-int					str_to_int(const char *str, int *front, t_dataset **data);
+int					str_to_int(const char *str, int *front, t_dataset **data, int rot);
 int					output_ptr(t_dataset *data, unsigned long long int ptr);
 int					output_char(t_dataset *data, char c);
 int					output_num(t_dataset *data, int nbr);
@@ -75,6 +76,8 @@ void				super_write(char *s, int flg);
 char				*cut_str(char *str, int size);
 char				*extend_str(char *str, int size, int cpy_limit);
 int					output(const char *args, int front, int rear, va_list list);
+int					process_invalid_str(const char *args, int front);
+void				str_cpy(const char *args, char **str, int a_ind, int s_ind);
 int					ft_vprintf(const char *args, va_list list);
 int					ft_printf(const char *args, ...);
 

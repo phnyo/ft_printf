@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:31:10 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/10 00:02:58 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/10 00:07:35 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,8 @@ void	super_write(char *s, int flg)
 			++ind;
 		}
 	}
-	write(1, s, ft_strlen(s));
+	else
+		write(1, s, ft_strlen(s));
 }
 
 char	*cut_str(char *str, int size)

@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/14 15:23:59 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/09 19:45:22 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/10 00:59:46 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		output(const char *args, int front, int rear, va_list list)
 		return (-1);
 	ret = 0;
 	if (parse_front(&data, args, front, list) == -1)
-		return (-1);
+		return (process_invalid_str(args, front));
 	if (args[rear] == '%')
 		ret += output_char(data, '%');
 	if (args[rear] == 'c')
@@ -55,10 +55,10 @@ int		ft_vprintf(const char *args, va_list list)
 			tmp = ++ind;
 			while (args[ind] && !is_terminator(args[ind]))
 				ind++;
-			if ((tmp = output(args, tmp, ind++, list)) != -1)
-				ret += tmp;
-			else
+			tmp = output(args, tmp, ind++, list);
+			if (tmp == -1)
 				return (-1);
+			ret += tmp;
 		}
 		else
 		{

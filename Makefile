@@ -6,11 +6,11 @@
 #    By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/26 16:52:53 by fsugimot          #+#    #+#              #
-#    Updated: 2020/10/06 22:03:47 by fsugimot         ###   ########.fr        #
+#    Updated: 2020/10/10 01:00:49 by fsugimot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS := converters.c converter_utils.c flg_parse.c flg_parse_utils.c flg_proc.c flg_proc_utils.c ft_printf.c num_utils.c str_utils.c
+SRCS := converters.c converter_utils.c flg_parse.c flg_parse_utils.c flg_proc.c flg_proc_utils.c ft_printf.c num_utils.c str_utils.c error_process.c
 CC := clang 
 OBJS := $(subst .c,.o,$(SRCS))
 DEBUG_SRCS := $(SRCS) ft_main.c
