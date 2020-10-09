@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:33:23 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/09 23:47:42 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/10 00:02:35 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	output_char(t_dataset *data, char c)
 	if (!c)
 	{
 		data->flg |= CHAR_NULL_FLG;
-		str[0] = -1;
+		str[0] = '0';
 	}
 	else
 		str[0] = c;

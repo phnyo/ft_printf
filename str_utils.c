@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:31:10 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/09 23:49:57 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/10 00:02:58 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,9 @@ char	*ft_strdup(const char *c)
 
 void	super_write(char *s, int flg)
 {
-	int	ind;
-	int	max;
+	int		ind;
+	int		max;
+	char	c;
 
 	if (flg)
 	{
@@ -53,10 +54,14 @@ void	super_write(char *s, int flg)
 		max = ft_strlen(s);
 		while (s[ind] && ind < max)
 		{
-			if (s[ind] != -1)
-				write(1, &s[ind], 1);
+			if (s[ind] == '0')
+			{
+				c = 0;
+				write(1, &c, 1);
+				s[ind] = 0;
+			}
 			else
-				write(1, 0, 1);
+				write(1, &s[ind], 1);
 			++ind;
 		}
 	}
