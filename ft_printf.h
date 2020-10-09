@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 17:00:20 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/09 13:41:49 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/09 16:34:12 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 # define SHA_FLG 8
 # define ZERO_FLG 16
 # define ZERO_PREC 32
-# define MIN_FIELD 64
 # define PTR_FLG 128
 
 typedef struct		s_dataset
@@ -39,7 +38,7 @@ typedef struct		s_dataset
 
 int					count_digit(long long int num, int div);
 char				*num_to_str(long long int num);
-char				*u_num_to_str(unsigned int num, int is_hex, int is_oct);
+char				*u_num_to_str(unsigned long long int num, int is_hex, int is_oct);
 int					str_to_int(const char *str, int *front, t_dataset **data);
 int					output_ptr(t_dataset *data, unsigned long long int ptr);
 int					output_char(t_dataset *data, char c);

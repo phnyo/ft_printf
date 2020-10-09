@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:43:39 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/09 12:27:15 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/09 16:34:05 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int		parse_front(t_dataset **data, const char *args, int front, va_list list)
 	{
 		tmp->width = va_arg(list, int);
 		if (tmp->width < 0)
-			tmp->flg |= MIN_FLG + MIN_FIELD;
+			tmp->flg |= MIN_FLG;
 		tmp->width = ft_abs(tmp->width);
 	}
 	tmp->precision = fill_field(args, cur, data, 1);
@@ -93,8 +93,7 @@ int		parse_front(t_dataset **data, const char *args, int front, va_list list)
 	{
 		tmp->precision = va_arg(list, int);
 		if (tmp->precision < 0)
-			tmp->flg |= MIN_FLG + MIN_FIELD;
-		tmp->precision = ft_abs(tmp->precision);
+			tmp->flg |= MIN_FLG;
 	}
 	return (1);
 }
