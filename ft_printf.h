@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 17:00:20 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/10 00:59:19 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/10 01:21:26 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ int					count_digit(long long int num, int div);
 char				*num_to_str(long long int num);
 char				*u_num_to_str(unsigned long long int num, int is_hex, \
 					int is_oct);
-int					str_to_int(const char *str, int *front, t_dataset **data, int rot);
+int					str_to_int(const char *str, int *front, t_dataset **data,\
+					int rot);
 int					output_ptr(t_dataset *data, unsigned long long int ptr);
 int					output_char(t_dataset *data, char c);
 int					output_num(t_dataset *data, int nbr);

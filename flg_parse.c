@@ -6,7 +6,11 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:43:39 by fsugimot          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2020/10/10 01:51:11 by fsugimot         ###   ########.fr       */
+=======
+/*   Updated: 2020/10/10 01:20:33 by fsugimot         ###   ########.fr       */
+>>>>>>> ed776da523139211b48a88debaabfae01f65eb9d
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +94,15 @@ int		parse_front(t_dataset **data, const char *args, int front, va_list list)
 		tmp->precision = va_arg(list, int);
 		fill_neg_flgs(data, tmp->precision, 1);
 	}
+<<<<<<< HEAD
 	if (tmp->precision == -2 && !is_terminator(args[*cur]) && (args[*cur] != '.' \
 		|| (args[*cur] == '.' && args[*cur + 1] == '.')))
 	{
 		free(*data);
+=======
+	if (tmp->precision == -2 && !is_terminator(args[*cur]) && \
+		(args[*cur] != '.' || (args[*cur] == '.' && args[*cur + 1] == '.')))
+>>>>>>> ed776da523139211b48a88debaabfae01f65eb9d
 		return (-1);
 	}
 	return (1);

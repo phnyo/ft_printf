@@ -6,7 +6,11 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/10 00:55:06 by fsugimot          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2020/10/10 01:36:00 by fsugimot         ###   ########.fr       */
+=======
+/*   Updated: 2020/10/10 01:19:41 by fsugimot         ###   ########.fr       */
+>>>>>>> ed776da523139211b48a88debaabfae01f65eb9d
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +19,7 @@
 int		process_invalid_str(const char *args, int front)
 {
 	int		flg;
-	int 	ind;
+	int		ind;
 	char	*str;
 
 	flg = fill_flg(args, front);
