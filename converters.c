@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:33:23 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/09 10:51:02 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/09 11:06:56 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	output_ptr(t_dataset *data, unsigned long long int ptr)
 	int		ret;
 	char	*str;
 
+	if (!ptr)
+		ptr = 0;
 	dig = count_digit(ptr, (1 << 4)) + 1;
 	str = malloc(dig + 3);
 	str[dig + 1] = 0;
