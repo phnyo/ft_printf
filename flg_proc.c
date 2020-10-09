@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:41:09 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/09 16:55:49 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/09 17:28:18 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int		process_w_p(t_dataset *data, char **str)
 	if (data->precision == tmp && data->datatype & SIGNED)
 		data->flg |= ZERO_FLG;
 	if (data->precision < ft_strlen(*str) && (!(data->datatype & NUM) || \
-		!data->precision))
+		(!data->precision && str[0][0] == '0')))
 	{
-		if ((data->precision < 0 && !(data->flg & MIN_FIELD)) || str[0][0] == '0')
+		if (data->precision <= 0)
 			tmp = (data->flg & ZERO_PREC ? 0 : ft_strlen(*str));
 		*str = cut_str(*str, data->precision);
 		*str = extend_str(*str, tmp, ft_strlen(*str));
