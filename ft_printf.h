@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 17:00:20 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/09 10:55:33 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/09 11:21:45 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define ZERO_FLG 16
 # define ZERO_PREC 32
 # define MIN_FIELD 64
+# define PTR_FLG 128
 
 typedef struct		s_dataset
 {
@@ -56,6 +57,7 @@ int					process_flg(t_dataset *data, char **str);
 int					process_fmt(t_dataset *data, char *str);
 char				*conv_left(char *str);
 char				*fill_zero(char *str, t_dataset *data);
+char				*fill_0x(char *str);
 char				*add_prefix(char *str, int flg, int len);
 int					is_neg(char *str);
 long long			ft_max(long long a, long long b);

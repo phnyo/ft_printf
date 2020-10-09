@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:33:23 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/09 11:06:56 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/09 11:23:04 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,11 @@ int	output_ptr(t_dataset *data, unsigned long long int ptr)
 	int		ret;
 	char	*str;
 
+	dig = count_digit(ptr, (1 << 4));
+	str = malloc(dig + 1);
+	str[dig] = 0;
 	if (!ptr)
-		ptr = 0;
-	dig = count_digit(ptr, (1 << 4)) + 1;
-	str = malloc(dig + 3);
-	str[dig + 1] = 0;
-	str[0] = '0';
-	str[1] = 'x';
+		str[0] = '0';
 	while (ptr > 0)
 	{
 		if (ptr % 16 > 9)
@@ -34,6 +32,7 @@ int	output_ptr(t_dataset *data, unsigned long long int ptr)
 		ptr /= 16;
 	}
 	data->datatype |= NUM;
+	data->flg |= PTR_FLG;
 	ret = process_fmt(data, str);
 	return (ret);
 }

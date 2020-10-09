@@ -56,9 +56,9 @@ int		fill_flg(const char *str, int front)
 		ind++;
 	}
 	if (ret & ZERO_FLG && ret & MIN_FLG)
-		ret |= ZERO_FLG;
+		ret &= ~ZERO_FLG;
 	if (ret & POS_FLG && ret & SPC_FLG)
-		ret |= SPC_FLG;
+		ret &= ~SPC_FLG;
 	return (ret);
 }
 
