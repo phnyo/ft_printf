@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:41:09 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/09 11:31:26 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/09 12:07:25 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int		process_w_p(t_dataset *data, char **str)
 		return (-1);
 	if (data->precision == tmp && data->datatype & SIGNED)
 		data->flg |= ZERO_FLG;
-	if (data->precision < ft_strlen(*str) && !(data->datatype & NUM))
+	if (data->precision < ft_strlen(*str) && (!(data->datatype & NUM) || \
+		!data->precision))
 	{
 		if (data->precision < 0 || str[0][0] == '0')
 			tmp = (data->flg & ZERO_PREC ? 0 : ft_strlen(*str));
@@ -39,8 +40,6 @@ int		process_w_p(t_dataset *data, char **str)
 
 int		process_flg(t_dataset *data, char **str)
 {
-	if (data->flg & MIN_FLG && !(data->flg & ZERO_FLG))
-		*str = conv_left(*str);
 	if (data->flg & SPC_FLG && data->datatype & SIGNED)
 		*str = add_prefix(*str, 8, 1);
 	if (data->flg & POS_FLG && data->datatype & SIGNED)
@@ -51,7 +50,7 @@ int		process_flg(t_dataset *data, char **str)
 		*str = fill_zero(*str, data);
 	if (data->flg & PTR_FLG)
 		*str = fill_0x(*str, data);
-	if (data->flg & MIN_FIELD && data->flg & MIN_FLG)
+	if (data->flg & MIN_FLG)
 		*str = conv_left(*str);
 	if (!(*str))
 		return (-1);

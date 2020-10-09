@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:49:49 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/08 16:29:30 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/09 12:13:40 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ int	str_to_int(const char *str, int *front, t_dataset **data)
 	ret = -2;
 	cur = *front;
 	tmp = *data;
-	if (str[cur] == '0')
-		tmp->flg |= ZERO_PREC;
 	if (is_num(str[cur]))
 		ret = 0;
 	while (is_num(str[cur]))

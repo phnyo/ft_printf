@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:43:39 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/08 22:32:21by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/09 12:13:17 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int		fill_field(const char *args, int *front, t_dataset **data, int rot)
 	num_r = *front;
 	if (args[num_r] == '.' && !(tmp->flg & ZERO_FLG))
 		tmp->flg |= ZERO_FLG; 
+	if (args[num_r] == '.')
+		tmp->flg |= ZERO_PREC;
 	while ((is_flg(args[num_r]) && !rot) || (rot && args[num_r] == '.'))
 		num_r++;
 	if (args[num_r] == '*')
