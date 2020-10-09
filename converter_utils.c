@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:45:13 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/08 15:59:41 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/09 13:46:26 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char	*num_to_str(long long int num)
 	return (ret);
 }
 
-char	*u_num_to_str(unsigned int num, int is_hex, int is_oct)
+char	*u_num_to_str(unsigned long long int num, int is_hex, int is_oct)
 {
 	int		div;
 	int		dig;
