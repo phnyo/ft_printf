@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:41:09 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/09 23:57:21 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/10 01:58:56 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int		process_flg(t_dataset *data, char **str)
 		&& !(data->flg & MIN_FIELD))
 		*str = fill_zero(*str, data);
 	if (data->flg & PTR_FLG)
-		*str = fill_0x(*str);
+		*str = add_prefix(*str, 6, 2);
 	if (data->flg & MIN_FLG)
 		*str = conv_left(*str);
 	if (!(*str))

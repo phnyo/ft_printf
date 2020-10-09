@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:38:07 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/09 19:36:12 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/10 02:02:48 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,10 @@ char	*fill_zero(char *str, t_dataset *data)
 	}
 	if (str[ind] == '-')
 	{
-		str[front - (str[front - 1] == ' ')] = '-';
+		if (front && str[front - 1] == ' ')
+			str[front - 1] = '-';
+		else
+			str[front] = '-';
 		str[ind] = (ind == front) ? '-' : '0';
 	}
 	return (str);
@@ -107,22 +110,3 @@ int		is_neg(char *str)
 	return (0);
 }
 
-char	*fill_0x(char *str)
-{
-	int			ind;
-	char		*ret;
-
-	ind = 0;
-	while (str[ind] == ' ')
-		ind++;
-	if (ind < 2)
-		ret = extend_str(str, ft_strlen(str) + (2 - ind), ft_strlen(str));
-	else
-		ret = str;
-	if (!ret)
-		return (ret);
-	ind = ind < 2 ? 2 : ind;
-	ret[ind - 2] = '0';
-	ret[ind - 1] = 'x';
-	return (ret);
-}

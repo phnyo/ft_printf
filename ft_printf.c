@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/14 15:23:59 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/10 00:59:46 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/10 01:45:41 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,11 @@ int		output(const char *args, int front, int rear, va_list list)
 	t_dataset	*data;
 
 	if (!is_terminator(args[rear]) || !(data = malloc(sizeof(t_dataset))))
+	{
+		if (!is_terminator(args[rear]))
+			free(data);
 		return (-1);
+	}
 	ret = 0;
 	if (parse_front(&data, args, front, list) == -1)
 		return (process_invalid_str(args, front));

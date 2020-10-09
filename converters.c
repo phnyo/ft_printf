@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:33:23 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/10 00:02:35 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/10 02:10:40 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,7 @@ int	output_ptr(t_dataset *data, unsigned long long int ptr)
 		data->flg &= ~ZERO_FLG;
 	}
 	else
-	{
-		str = malloc(dig + 1);
 		str = u_num_to_str(ptr, 1, 0);
-	}
 	data->datatype |= NUM;
 	data->flg |= PTR_FLG;
 	ret = process_fmt(data, str);
