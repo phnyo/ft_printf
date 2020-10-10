@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:43:39 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/10 02:35:46 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/10 11:42:57 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,16 @@ int		fill_flg(const char *str, int front)
 	ind = front;
 	while (is_flg(str[ind]))
 	{
-		if (str[ind] == '-' && !(ret & MIN_FLG))
-			ret |= (MIN_FLG);
-		if (str[ind] == ' ' && !(ret & SPC_FLG))
-			ret |= (SPC_FLG);
-		if (str[ind] == '+' && !(ret & POS_FLG))
-			ret |= (POS_FLG);
-		if (str[ind] == '#' && !(ret & SHA_FLG))
-			ret |= (SHA_FLG);
-		if (str[ind] == '0' && !(ret & ZERO_FLG))
-			ret |= (ZERO_FLG);
+		if (str[ind] == '-')
+			ret |= MIN_FLG;
+		if (str[ind] == ' ')
+			ret |= SPC_FLG;
+		if (str[ind] == '+')
+			ret |= POS_FLG;
+		if (str[ind] == '#')
+			ret |= SHA_FLG;
+		if (str[ind] == '0')
+			ret |= EX_ZERO_FLG + ZERO_FLG;
 		ind++;
 	}
 	if (ret & ZERO_FLG && ret & MIN_FLG)

@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:33:23 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/10 02:10:40 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/10 11:43:24 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int	output_str(t_dataset *data, const char *content)
 	int		ret;
 	char	*str;
 
-	if (data->flg & ZERO_FLG)
+	if (data->flg & ZERO_FLG && !(data->flg & EX_ZERO_FLG))
 		data->flg &= ~ZERO_FLG;
 	if (!content)
 		str = ft_strdup("(null)");

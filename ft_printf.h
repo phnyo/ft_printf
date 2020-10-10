@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 17:00:20 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/10 02:34:00 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/10 11:41:28 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define PTR_FLG 128
 # define CHAR_NULL_FLG 256
 # define PARSE_ERROR 512
+# define EX_ZERO_FLG (1 << 10)
 
 typedef struct		s_dataset
 {
