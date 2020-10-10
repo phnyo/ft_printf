@@ -6,7 +6,7 @@
 /*   By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/26 16:33:23 by fsugimot          #+#    #+#             */
-/*   Updated: 2020/10/10 11:43:24 by fsugimot         ###   ########.fr       */
+/*   Updated: 2020/10/10 21:20:57 by fsugimot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 int	output_ptr(t_dataset *data, unsigned long long int ptr)
 {
-	int		dig;
 	int		ret;
 	char	*str;
 
-	dig = count_digit(ptr, (1 << 4));
 	if (data->flg & ZERO_PREC && !ptr)
 	{
 		str = ft_strdup("");
