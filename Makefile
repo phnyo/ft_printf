@@ -6,7 +6,7 @@
 #    By: fsugimot <fsugimot@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/26 16:52:53 by fsugimot          #+#    #+#              #
-#    Updated: 2020/10/10 21:16:02 by fsugimot         ###   ########.fr        #
+#    Updated: 2020/10/10 21:27:05 by fsugimot         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ OBJS := $(subst .c,.o,$(SRCS))
 CFLAGS := -Wall -Werror -Wextra -I./
 NAME := libftprintf.a
 
-.PHONY=all clean re fclean
+.PHONY=all clean re fclean bonus
+bonus: $(NAME)
 all: $(NAME)
 $(NAME): $(OBJS) 
 	ar rcs $(NAME) $(OBJS)
